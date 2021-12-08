@@ -1,6 +1,10 @@
-
 * {
   box-sizing: border-box;
+}
+
+:root{
+  --primary-color: rgb(56, 165, 255);
+  --secondary-color: rgb(60, 60, 60);
 }
 
 body {
@@ -13,12 +17,23 @@ body {
   background-color: rgb(60, 60, 60);
 }
 
-div.test {
+#title{
+  color: var(--primary-color);
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+  padding-left: 50px;
+  padding-bottom: 0px;
+  margin: 0px;
+}
+
+div.input {
   width: 300px;
   border: 10px solid grey;
   border-radius: 25px;
   padding: 50px;
   margin: 50px;
+  margin-top: 0px;
 }
 
 button {
@@ -32,4 +47,23 @@ button:hover {
   font-size: large;
   color: rgba(18, 5, 133);
   background-color: white;
+}
+
+.results h1{
+  color: var(--primary-color);
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+  padding-left: 50px;
+  padding-bottom: 0px;
+  margin: 0px;
+}
+
+.results div{
+  color: green;
+  align-items: center;
+  justify-content: center;
+  padding-left: 50px;
+  padding-bottom: 0px;
+  margin: 0px;
 }
