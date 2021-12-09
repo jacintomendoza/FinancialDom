@@ -5,45 +5,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <title>Interest Calculator</title>
     <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 <body>
+
+    <header>
+
+    </header>
+
     <h1 id="title">Interest Calculator</h1>
 
-    <div class="input">
+    <div class="grid-container">
+        <div class="input">
+            <div class="info" onclick="popUp()">
+            <i class="fas fa-info-circle"></i>
+            <span class="extra-info" id="popUp">
+                Interest is the amount of money the bank pays you after you store money in an account with them for a certain amount of time.
+            </span>
+            </div>
+            <div id="initial-container">
+                <h3>Inital Value:</h3>
+                <i class="fas fa-dollar-sign"></i>
+                <label for="initial" class="initial"></label>
+                <input type="number" id="initial-val" name="initial" placeholder="$$$"><br><br>
+            </div>
 
-        <div id="initial-container">
-            <h3>Inital Value:</h3>
-            <label for="initial" class="initial"></label>
-            <input type="number" id="initial-val" name="initial" placeholder="$$$"><br><br>
+            <div class="interest-container">
+                <h3>Interest Rate:</h3>
+                <i class="fas fa-dollar-sign"></i>
+                <input type="number" id="interest-val" name="interest" placeholder="%%%"><br><br>
+            </div>
+
+            <div class="time-container">
+                <h3>Length of Time:</h3>
+                <input type="number" id="length-of-time" name="time" placeholder="In Months"> month(s)<br><br>
+            </div>
+
+            <div class="calculate-container">
+                <button id="calculateBtn">Calculate</button>
+            </div>
+
         </div>
 
-        <div class="interest-container">
-            <h3>Interest Rate:</h3>
-            <input type="number" id="interest-val" name="interest" placeholder="%%%"><br><br>
-        </div>
-
-        <div class="time-container">
-            <h3>Length of Time:</h3>
-            <input type="number" id="length-of-time" name="time" placeholder="In Months"><br><br>
-        </div>
-
-        <div class="calculate-container">
-            <button id="calculateBtn">Calculate</button>
+        <div class="faq-container">
+            <div class="faq active">
+            <h3 class="faq-title">
+                Why you should save!
+            </h3>
+            <p class="faq-text">
+                Saving money is important because it helps you out in the event of a rainy day. 
+                You can also use your savings to build up for larger purchases. 
+                Finally, money that sits in an account usually gains interest, which is extra money the bank pays you for storing your money with them.
+            </p>
+            <button class="faq-toggle">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            </div>
         </div>
     </div>
 
     <div class="results">
         <h1>Future Value</h1>
         <div id="result-future-value">
-            N/A
+            $00.00
         </div>
         <h1>Total Interest Earned</h1>
         <div id="result-total-interest">
-            N/A
+            $00.00
         </div>
     </div>
-    
+
+    <div class="chart">
+        <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
+    </div>
+
 </body>
 </html>

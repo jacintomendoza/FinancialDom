@@ -33,22 +33,61 @@ function calculateVals(){
     localStorage.setItem('interestStorage', interest) //////////////////////////////// LOCAL STORAGE
     localStorage.setItem('lengthOfTimeStorage', lengthOfTime) //////////////////////////////// LOCAL STORAGE
     
-    console.log(initialVal)
-    console.log(interest)
-    console.log(lengthOfTime)
-    // Fix math here later
-    const futureVal = initialVal + (initialVal * ((interest/100) * (lengthOfTime/12)))
-    const interestEarned = futureVal - initialVal
 
-    console.log("Future Val: " + futureVal)
-    console.log("interestEarned: " + interestEarned)
+    // CALCULATIONS
+    const initialVal_int = parseInt(initialVal)
+    const interest_int = parseInt(interest)
+    const lengthOfTime_int = parseInt(lengthOfTime)
 
-    outputNums(futureVal, interestEarned)
+    const futureVal = initialVal_int + (initialVal_int * ((interest_int/100) * (lengthOfTime_int/12)))
+    const interestEarned = futureVal - initialVal_int
+
+    outputNums(futureVal, interestEarned, initialVal_int)
 }
 
 // DOM Function
-function outputNums(futureVal, interestEarned){
+function outputNums(futureVal, interestEarned, initialVal_int){
     // Takes an element in HTML and equals it to value in JavaScript
     document.getElementById("result-future-value").innerHTML = dollarUS.format(futureVal);
     document.getElementById("result-total-interest").innerHTML = dollarUS.format(interestEarned);
+
+    // BAR CHART ///////////////////////////////////////
+    var xValues = ["Initial Value", "Invested Value"];
+    var yValues = [initialVal, futureVal, 0];
+    var barColors = ["red", "green"];
+    new Chart("myChart", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                display: true,
+                text: "Investment Difference",
+                fontSize: 30
+                }
+            }
+        });
+        window.scrollBy(0, 1000);
+        // const outputEl = document.createElement('div')
+        // outputEl.innerHTML =`<canvas id="myChart" style="width:100%;max-width:600px"></canvas>`
+        // document.getElementsByClassName("chart").appendChild(outputEl);
 }
+
+function popUp() {
+    var popup = document.getElementById("popUp");
+    popup.classList.toggle("show");
+}
+
+const toggles = document.querySelectorAll('.faq-toggle')
+
+toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        toggle.parentNode.classList.toggle('active')
+    })
+})

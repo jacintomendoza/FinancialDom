@@ -1,56 +1,111 @@
 * {
   box-sizing: border-box;
+  transition: all .2s ease;
 }
 
-:root{
-  --primary-color: rgb(56, 165, 255);
-  --secondary-color: rgb(60, 60, 60);
+/* Colors
+rgba(73, 198, 29)
+rgba(0, 189, 157)
+rgba(139, 215, 210)
+rgba(84, 222, 253) 
+*/
+
+html{
+  scroll-behavior: smooth;
+}
+
+header {
+  padding: 1rem;
+  background-color: rgba(84, 222, 253);
+  display: flex;
+  justify-content: space-between;
+  height: 3rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  top: 0;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  overflow: hidden;
   margin: 0;
-  background-color: rgb(60, 60, 60);
+  background-color: rgba(139, 215, 210);
+}
+
+input{
+  /* display: flex; */
+}
+
+/* FAQ */
+
+.faq-container {
+  /* display: flex; */
+  max-width: 300px;
+  max-height: 100px;
+  margin: 15px;
+  margin-top: 0px;
+  background-color: wheat;
+  border-radius: 10px;
 }
 
 #title{
-  color: var(--primary-color);
+  color: var(--primary-color); 
   align-items: center;
   justify-content: center;
-  padding-top: 30px;
+  padding-top: 10px;
   padding-left: 50px;
-  padding-bottom: 0px;
+  padding-bottom: 20px;
   margin: 0px;
 }
 
 div.input {
   width: 300px;
   border: 10px solid grey;
-  border-radius: 25px;
+  border-radius: 15px;
   padding: 50px;
   margin: 50px;
   margin-top: 0px;
+  margin-bottom: 2px;
+  margin-right: 0px;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
+  background-color: rgba(84, 222, 253);
+}
+
+div.input h3{
+  margin-bottom: 2px;
+}
+
+.input #length-of-time{
+  width: 90px;
 }
 
 button {
   font-size: large;
   color: white;
-  background-color: rgba(18, 5, 133);
-  width: 100px;
+  background-color: rgba(139, 215, 210);
+  width: 120px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px rgbgrey;
+  cursor: pointer;
+  display: relative;
+  left: 80px;
 }
 
 button:hover {
   font-size: large;
-  color: rgba(18, 5, 133);
-  background-color: white;
+  color: white;
+  background-color: rgba(18, 5, 133);
+}
+
+button:active {
+  box-shadow: 0 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(4px);
 }
 
 .results h1{
-  color: var(--primary-color);
+  color: rgb(56, 165, 255);
   align-items: center;
   justify-content: center;
   padding-top: 30px;
@@ -66,4 +121,172 @@ button:hover {
   padding-left: 50px;
   padding-bottom: 0px;
   margin: 0px;
+  font-size: 25px;
+}
+
+/* Popup container */
+.info {
+  position: relative;
+  left: 180px;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.info .extra-info {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+/* Popup arrow */
+.info .extra-info::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.info .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+.chart{
+  padding-left: 50px;
+}
+
+.input {
+  grid-area: left;
+}
+
+.faq-container {
+  grid-area: right;
+}
+
+.grid-container {
+  display: flex;
+  /* grid-template-columns: 1fr 1fr; */
+  /* grid-gap: 10px; */
+  /* grid-template-areas: 
+    "left right"; */
+}
+
+/* FAQ Rest of Stuff */
+
+.faq {
+  background-color: transparent;
+  border: 1px solid #9fa4a8;
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
+  margin-top: 0px;
+}
+
+.faq.active {
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* .faq.active::before,
+.faq.active::after {
+  content: '\f075';
+  font-family: 'Font Awesome 5 Free';
+  color: #df0d4c;
+  font-size: 7rem;
+  position: absolute;
+  opacity: 0.2;
+  top: 20px;
+  left: 20px;
+  z-index: 0;
+}
+*/
+.faq.active::before {
+  color: #2bff00;
+  top: -10px;
+  left: -30px;
+  transform: rotateY(180deg);
+}
+
+.faq-title {
+  margin: 0 35px 0 0;
+}
+
+.faq-text {
+  display: none; /* This hides the text from showing for inactive */
+  margin: 30px 0 0;
+}
+
+.faq.active .faq-text {
+  display: block; /* This shows the text if active */
+}
+
+.faq-toggle {
+  background-color: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding: 0;
+  position: absolute;
+  top: 30px;
+  /* right: 10px; */
+  left: 250px;
+  height: 30px;
+  width: 30px;
+}
+
+.faq-toggle:focus {
+  outline: 0;
+}
+
+.faq-toggle .fa-times {
+  display: none;
+}
+
+.faq.active .faq-toggle .fa-times {
+  color: rgb(255, 0, 0);
+  display: block;
+}
+
+.faq.active .faq-toggle .fa-chevron-down {
+  display: none;
+}
+
+.faq.active .faq-toggle {
+  background-color: #a8a89f;
 }
