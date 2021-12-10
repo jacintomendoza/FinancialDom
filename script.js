@@ -67,9 +67,9 @@ function outputNums(futureVal, interestEarned, initialVal_int){
             options: {
                 legend: {display: false},
                 title: {
-                display: true,
-                text: "Investment Difference",
-                fontSize: 30
+                    display: true,
+                    text: "Investment Difference",
+                    fontSize: 30
                 }
             }
         });
