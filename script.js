@@ -53,7 +53,7 @@ function outputNums(futureVal, interestEarned, initialVal_int){
 
     // BAR CHART ///////////////////////////////////////
     var xValues = ["Initial Value", "Invested Value"];
-    var yValues = [initialVal, futureVal, 0];
+    var yValues = [initialVal_int, futureVal, 0];
     var barColors = ["red", "green"];
     new Chart("myChart", {
             type: "bar",
